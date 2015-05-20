@@ -1,0 +1,12 @@
+{
+  "name": "<%= props.addonName %>",
+  "displayName": "<%= props.addonDisplayName %>",
+  "version": "0.0.0",
+  "description": "",
+  "icon": "",
+  "include": [
+    "<%= props.addonFileName %>-module.js"
+  ],
+  "serve": []
+}
+
