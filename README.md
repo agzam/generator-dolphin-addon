@@ -1,4 +1,4 @@
-# generator-dolphin-addon [![Build Status](https://secure.travis-ci.org/avishnyak/generator-dolphin-addon.png?branch=master)](https://travis-ci.org/avishnyak/generator-dolphin-addon)
+# generator-dolphin-addon
 
 > [Yeoman](http://yeoman.io) generator
 
