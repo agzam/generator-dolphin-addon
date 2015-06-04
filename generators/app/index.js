@@ -31,11 +31,13 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  configuring: function() {
+    this.template('_bower.json', 'bower.json');
+    this.template('_package.json', 'package.json');
+  },
+
   writing: {
     app: function () {
-      this.template('_bower.json', 'bower.json');
-      this.template('_package.json', 'package.json');
-
       if (!this.options['skip-data']) {
         mkdirp.sync('data');
         mkdirp.sync('data/entity');

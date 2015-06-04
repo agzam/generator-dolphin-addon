@@ -32,6 +32,38 @@ yo dolphin-addon
 
 After Yeoman has created the addon framework, feel free to adjust the ```package.json``` file and run ```gulp``` from your command line to get a runnable addon.
 
+## Generators
+
+Available generators:
+
+* [dolphin-addon:action](#action)
+* [dolphin-addon:column](#column)
+* [dolphin-addon:validation](#validation)
+
+### Action
+Generates an action in `src/actions`.
+
+Example:
+```bash
+yo dolphin-addon:action
+```
+
+### Column
+Generates a column definition in `src/column-defs`.
+
+Example:
+```bash
+yo dolphin-addon:column
+```
+
+### Validation
+Generates a validation in `src/validations`.
+
+Example:
+```bash
+yo dolphin-addon:validation
+```
+
 ## License
 
 MIT
