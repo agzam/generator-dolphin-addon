@@ -18,7 +18,7 @@ licenses = if pkg.licenses? then _.pluck(pkg.licenses, "type").join(", ") else '
 banner = "/*! Dolphin Addon */\n\n"
 
 gulp.task 'jscs', ->
-    gulp.src(clientFiles)
+    gulp.src clientFiles.concat "!src/#{pkgName}-tmpl.js"
     .pipe($.jscs())
 
 gulp.task 'tests', ['jscs'], ->
