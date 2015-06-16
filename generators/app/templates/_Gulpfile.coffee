@@ -11,6 +11,14 @@ licenses = if pkg.licenses? then _.pluck(pkg.licenses, "type").join(", ") else '
 
 banner = "/*! Dolphin Addon */\n\n"
 
+gulp.task 'tests', ->
+    karma = require('karma')
+    karmaConfig = __dirname + '/karma.conf'
+    karma.server.start {
+        configFile: karmaConfig
+        singleRun: yes
+    }
+
 gulp.task 'update_json', ->
   gulp.src('./bower.json')
   .pipe($.jsonTransform ((data)->
@@ -48,7 +56,6 @@ gulp.task 'concat', ['ngtemplates'], ->
   .pipe($.concat(pkgName + '.min.js'))
   .pipe $.sourcemaps.write('./')
   .pipe(gulp.dest('./public'))
-  .on 'end', -> del "./src/#{pkgName}-tmpl.js"
 
 gulp.task 'concat:css', ->
   gulp.src(['./src/**/*.css'])
