@@ -34,6 +34,7 @@ module.exports = yeoman.generators.Base.extend({
   configuring: function() {
     this.template('_bower.json', 'bower.json');
     this.template('_package.json', 'package.json');
+    this.template('_karma.conf.coffee', 'karma.conf.coffee');
   },
 
   writing: {
@@ -55,6 +56,9 @@ module.exports = yeoman.generators.Base.extend({
 
       this.copy('jscsrc', '.jscsrc');
       this.copy('editorconfig', '.editorconfig');
+      this.copy('_.gitignore', '.gitignore');
+      this.copy('local.karma.conf.coffee', 'local.karma.conf.coffee');
+
     }
   },
 
