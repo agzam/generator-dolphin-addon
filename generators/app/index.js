@@ -50,6 +50,7 @@ module.exports = yeoman.generators.Base.extend({
       mkdirp.sync('public');
 
       this.template('_main-module.js', 'src/' + this.props.addonFileName + '-module.js');
+      this.template('_main-module-spec.coffee', 'src/' + this.props.addonFileName + '-module-spec.coffee');
       this.template('_main-controller.js', 'src/' + this.props.addonFileName + '-controller.js');
 
       this.template('_Gulpfile.coffee', 'Gulpfile.coffee');
