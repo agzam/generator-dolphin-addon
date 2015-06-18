@@ -4,6 +4,12 @@ pkg = require './package.json'
 moment = require 'moment'
 $.q = require 'q'
 del = require 'del'
+clientFiles = [
+    'src/<%= props.addonFileName %>-module.js'
+    "src/#{pkgName}-tmpl.js"
+    'src/**/*.js'
+    '!public/**/*'
+]
 
 pkgName = pkg.name.toLowerCase()
 
@@ -11,7 +17,11 @@ licenses = if pkg.licenses? then _.pluck(pkg.licenses, "type").join(", ") else '
 
 banner = "/*! Dolphin Addon */\n\n"
 
-gulp.task 'tests', ->
+gulp.task 'jscs', ->
+    gulp.src clientFiles.concat "!src/#{pkgName}-tmpl.js"
+    .pipe($.jscs())
+
+gulp.task 'tests', ['jscs'], ->
     karma = require('karma')
     karmaConfig = __dirname + '/karma.conf'
     karma.server.start {
@@ -44,12 +54,7 @@ gulp.task 'ngtemplates', ->
   dfrd.promise
 
 gulp.task 'concat', ['ngtemplates'], ->
-  gulp.src([
-    'src/<%= props.addonFileName %>-module.js'
-    "src/#{pkgName}-tmpl.js"
-    'src/**/*.js'
-    '!public/**/*'
-  ])
+  gulp.src(clientFiles)
   .pipe $.sourcemaps.init()
   .pipe($.babel())
   .pipe($.ngAnnotate single_quotes: true)
