@@ -337,5 +337,4 @@ Session.vim
 .netrwhist
 
 src/*-tmpl.js
-public
 local.karma.conf.*
