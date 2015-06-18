@@ -5,10 +5,10 @@ moment = require 'moment'
 $.q = require 'q'
 del = require 'del'
 clientFiles = [
-    'src/<%= props.addonFileName %>-module.js'
-    "src/#{pkgName}-tmpl.js"
-    'src/**/*.js'
-    '!public/**/*'
+  'src/<%= props.addonFileName %>-module.js'
+  "src/#{pkgName}-tmpl.js"
+  'src/**/*.js'
+  '!public/**/*'
 ]
 
 pkgName = pkg.name.toLowerCase()
@@ -18,16 +18,16 @@ licenses = if pkg.licenses? then _.pluck(pkg.licenses, "type").join(", ") else '
 banner = "/*! Dolphin Addon */\n\n"
 
 gulp.task 'jscs', ->
-    gulp.src clientFiles.concat "!src/#{pkgName}-tmpl.js"
-    .pipe($.jscs())
+  gulp.src clientFiles.concat "!src/#{pkgName}-tmpl.js"
+  .pipe($.jscs())
 
 gulp.task 'tests', ['jscs'], ->
-    karma = require('karma')
-    karmaConfig = __dirname + '/karma.conf'
-    karma.server.start {
-        configFile: karmaConfig
-        singleRun: yes
-    }
+  karma = require('karma')
+  karmaConfig = __dirname + '/karma.conf'
+  karma.server.start {
+    configFile: karmaConfig
+    singleRun: yes
+  }
 
 gulp.task 'update_json', ->
   gulp.src('./bower.json')
@@ -46,7 +46,7 @@ gulp.task 'ngtemplates', ->
   gulp.src('./src/**/*.html')
   .pipe($.ngTemplates {
       module: pkgName + 'Templates',
-      path: (path, base)-> path.replace(base, pkgName + '\/')
+      path: (path, base)-> path.replace(base, pkgName + '-' + pkg.version + '\/')
     })
   .pipe($.concat(pkgName + '-tmpl.js'))
   .pipe(gulp.dest('./src'))
@@ -64,7 +64,7 @@ gulp.task 'concat', ['ngtemplates'], ->
 
 gulp.task 'concat:css', ->
   gulp.src(['./src/**/*.css'])
-  .pipe($.concatCss pkgName+'.css')
+  .pipe($.concatCss pkgName + '.css')
   .pipe(gulp.dest 'public')
 
 gulp.task 'watch', ['update_json', 'concat', 'concat:css'], ->
