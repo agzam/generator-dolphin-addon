@@ -1,0 +1,4 @@
+git-tag-version = false
+
+registry = "http://registry.npmjs.org/"
+

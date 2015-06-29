@@ -56,6 +56,7 @@ module.exports = yeoman.generators.Base.extend({
       this.template('_Gulpfile.coffee', 'Gulpfile.coffee');
 
       this.copy('jscsrc', '.jscsrc');
+      this.copy('npmrc', '.npmrc');
       this.copy('editorconfig', '.editorconfig');
       this.copy('_.gitignore', '.gitignore');
       this.copy('local.karma.conf.coffee', 'local.karma.conf.coffee');
