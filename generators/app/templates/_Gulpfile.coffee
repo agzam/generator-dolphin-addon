@@ -68,7 +68,7 @@ gulp.task 'concat:css', ->
   .pipe(gulp.dest 'public')
 
 gulp.task 'watch', ['update_json', 'concat', 'concat:css'], ->
-  gulp.watch ['./**/*.js', './**/*.html', '!./public/**'], ['concat']
-  gulp.watch ['./**/*.css', '!./public/**'], ['concat:css']
+  gulp.watch ['./src/**/*.js', './src/**/*.html', '!./public/**'], ['concat']
+  gulp.watch ['./src/**/*.css', '!./public/**'], ['concat:css']
 
 gulp.task 'default', ['concat:css', 'concat', 'update_json']
