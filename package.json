@@ -1,6 +1,6 @@
 {
   "name": "generator-dolphin-addon",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Yeoman generator for Dolphin Addons",
   "license": "MIT",
   "main": "app/index.js",
