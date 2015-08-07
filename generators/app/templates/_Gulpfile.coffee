@@ -63,6 +63,8 @@ gulp.task 'concat', ['ngtemplates'], ->
     .pipe(gulp.dest('./public'))
 
 gulp.task 'concat:css', ->
+    $.autoprefixer = require 'autoprefixer-core'
+
     gulp.src(['./src/**/*.css'])
     .pipe $.sourcemaps.init()
     .pipe $.postcss [$.autoprefixer { browsers: ['last 2 version'] }]
